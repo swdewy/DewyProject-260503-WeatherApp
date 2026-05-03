@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouYou Weather</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <h1 class="title">YouYou Weather</h1>
+        <div class="city-row">
+          <label class="city-label" for="city-select">도시</label>
+          <select id="city-select" class="city-select" aria-label="도시 선택"></select>
+        </div>
+      </header>
+
+      <section class="recent" aria-label="최근 선택 도시">
+        <span class="recent-label">최근</span>
+        <div id="recent-cities" class="recent-chips"></div>
+      </section>
+
+      <main class="stage">
+        <div class="character-wrap" id="character-wrap">
+          <img
+            id="character"
+            class="character"
+            src="assets/YouYou_Origin.png"
+            alt=""
+            width="320"
+            height="320"
+          />
+        </div>
+        <p id="message" class="message" role="status"></p>
+
+        <div id="loading" class="loading" hidden>
+          <span class="spinner" aria-hidden="true"></span>
+          <span>날씨를 불러오는 중이에요…</span>
+        </div>
+
+        <div id="error-panel" class="error-panel" hidden>
+          <p id="error-text" class="error-text"></p>
+          <button type="button" id="retry-btn" class="btn btn-accent">재시도</button>
+        </div>
+
+        <section id="stats" class="stats" aria-live="polite">
+          <div class="stat-card">
+            <span class="stat-label">온도</span>
+            <strong id="stat-temp" class="stat-value">—</strong>
+            <span id="stat-feels" class="stat-sub muted"></span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">습도</span>
+            <strong id="stat-humidity" class="stat-value">—</strong>
+          </div>
+          <div class="stat-card accent-border">
+            <span class="stat-label">미세먼지</span>
+            <strong id="stat-pm25" class="stat-value muted">—</strong>
+            <span id="air-badge" class="air-badge">—</span>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
