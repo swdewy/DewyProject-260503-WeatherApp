@@ -1,7 +1,7 @@
-/** OpenWeather 발급 키를 여기에 넣어주세요. */
-const API_KEY = '';
-
 const STORAGE_KEY = 'youyou-weather-prefs';
+const API_KEY_STORAGE_KEY = 'youyou-weather-api-key';
+
+let API_KEY = localStorage.getItem(API_KEY_STORAGE_KEY) || '';
 
 const CITIES = {
   서울: { lat: 37.5665, lon: 126.978 },
@@ -188,6 +188,8 @@ const elCitySelect = document.getElementById('city-select');
 const elRecentWrap = document.getElementById('recent-cities');
 const elCharacter = document.getElementById('character');
 const elCharacterWrap = document.getElementById('character-wrap');
+const elApiKeyInput = document.getElementById('api-key-input');
+const elApiKeySave = document.getElementById('api-key-save');
 const elMessage = document.getElementById('message');
 const elLoading = document.getElementById('loading');
 const elErrorPanel = document.getElementById('error-panel');
@@ -323,7 +325,7 @@ function showError(show, text) {
 
 async function refreshWeather() {
   if (!API_KEY) {
-    showError(true, 'API 키가 필요해요. app.js에서 API_KEY를 설정해 주세요.');
+    showError(true, '상단에 API 키를 입력하고 저장해주세요.');
     renderStatsDash();
     elMessage.textContent = '먼저 OpenWeather 키를 연결해야 해요.';
     setCharacterWithFade('origin');
@@ -386,6 +388,13 @@ function boot() {
 
   elCitySelect.addEventListener('change', () => {
     selectCity(elCitySelect.value);
+  });
+
+  elApiKeyInput.value = API_KEY;
+  elApiKeySave.addEventListener('click', () => {
+    API_KEY = elApiKeyInput.value.trim();
+    localStorage.setItem(API_KEY_STORAGE_KEY, API_KEY);
+    refreshWeather();
   });
 
   elRetryBtn.addEventListener('click', () => refreshWeather());

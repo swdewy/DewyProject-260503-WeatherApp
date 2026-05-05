@@ -5,8 +5,8 @@
 ## OpenWeather 키
 
 1. [OpenWeather](https://openweathermap.org/)에서 무료 API 키를 발급합니다.
-2. `app.js` 맨 위 `API_KEY`에 키 문자열을 넣고 저장합니다.
-3. 브라우저에서 `index.html`을 열면 됩니다 (`file://`로 열어도 동작은 하지만 CORS 없이 브라우저에서 직접 열어도 OWM은 보통 허용됩니다).
+2. 브라우저에서 `index.html`을 열고, 상단 입력칸에 API 키를 입력한 뒤 저장합니다.
+3. 키는 브라우저 로컬 스토리지에 저장되어 새로고침 후에도 유지됩니다.
 
 ## 파일 구조
 
