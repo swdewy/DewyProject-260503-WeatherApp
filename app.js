@@ -394,6 +394,13 @@ function boot() {
   elApiKeySave.addEventListener('click', () => {
     API_KEY = elApiKeyInput.value.trim();
     localStorage.setItem(API_KEY_STORAGE_KEY, API_KEY);
+    
+    const originalText = elApiKeySave.textContent;
+    elApiKeySave.textContent = '저장됨!';
+    setTimeout(() => {
+      elApiKeySave.textContent = originalText;
+    }, 1500);
+
     refreshWeather();
   });
 
